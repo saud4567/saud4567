@@ -1,7 +1,21 @@
 version: 2.1
 
 jobs:
-  ssh-and-create-directory:
+  # Job for Testing
+  test:
+    docker:
+      - image: circleci/python:3.8
+
+    steps:
+      - checkout
+
+      - run:
+          name: Run Tests
+          command: |
+            # Add your testing commands here
+
+  # Job for Deploying to EC2
+  deploy_to_ec2:
     docker:
       - image: circleci/python:3.8
 
@@ -13,7 +27,17 @@ jobs:
             - "d1:6a:a7:20:49:5e:6e:5e:fc:7b:35:38:b8:ae:7f:af"
 
       - run:
-          name: SSH into EC2 Instance and Create Directory
+          name: Deploy to EC2
           command: |
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@your_instance_ip "mkdir -p /home/ubuntu/saud4567/.circleci"
+            # SSH into your EC2 instance and perform deployment tasks
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/circleci_ssh_key ec2-user@3.252.217.219 "mkdir -p /home/ubuntu/saud4567/.circleci"
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy_to_ec2:
+          requires:
+            - test
 
