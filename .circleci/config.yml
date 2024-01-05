@@ -24,13 +24,13 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "d1:6a:a7:20:49:5e:6e:5e:fc:7b:35:38:b8:ae:7f:af"
+            - "f0:c6:76:94:ce:c8:38:e9:0f:6a:33:0a:9d:8a:63:41"
 
       - run:
           name: Deploy to EC2
           command: |
             # SSH into your EC2 instance and perform deployment tasks
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/circleci_ssh_key ec2-user@3.252.217.219 "mkdir -p /home/ubuntu/saud4567/.circleci"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 ec2-user@3.252.217.219 "mkdir -p /home/ubuntu/"
 
 workflows:
   version: 2
