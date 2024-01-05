@@ -30,7 +30,8 @@ jobs:
           name: Deploy to EC2
           command: |
             # SSH into your EC2 instance and perform deployment tasks
-            ssh -vvv -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/id_ed25519 ubuntu@3.252.217.219 "mkdir -p /home/ubuntu/"
+            ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/id_ed25519 ubuntu@3.252.217.219 "mkdir -p /home/ubuntu/"
+
 
 workflows:
   version: 2
