@@ -1,44 +1,14 @@
 version: 2.1
 
 jobs:
-  # Job for Testing
-  test:
+  deploy:
     docker:
-      - image: circleci/python:3.8
-
+      - image: arvindr226/alpine-ssh
     steps:
-      - checkout
-
-      - run:
-          name: Run Tests
-          command: |
-            # Add your testing commands here
-
-  # Job for Deploying to EC2
-  deploy_to_ec2:
-    docker:
-      - image: circleci/python:3.8
-
-    steps:
-      - checkout
-
-      - add_ssh_keys:
-          fingerprints:
-            - "f0:c6:76:94:ce:c8:38:e9:0f:6a:33:0a:9d:8a:63:41"
-
-      - run:
-          name: Deploy to EC2
-          command: |
-            # SSH into your EC2 instance and perform deployment tasks
-            ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/id_ed25519.pub ubuntu@3.252.217.219 "mkdir -p /home/ubuntu/"
-
+      - run: ssh -oStrictHostKeyChecking=no -v $USER@$DNS "./deploy.sh"
 
 workflows:
-  version: 2
-  test_and_deploy:
+  deploy-to-ec2:
     jobs:
-      - test
-      - deploy_to_ec2:
-          requires:
-            - test
+      - deploy
 
