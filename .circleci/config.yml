@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Deploy to Remote Server
           command: |
-            ssh -o StrictHostKeyChecking=no -v $ubuntu@$ec2-34-244-215-8.eu-west-1.compute.amazonaws.com "./deploy.sh"
+            ssh -o StrictHostKeyChecking=no -v ubuntu@ec2-34-244-215-8.eu-west-1.compute.amazonaws.com "./deploy.sh"
 
 workflows:
   version: 2
