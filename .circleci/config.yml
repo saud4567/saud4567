@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Deploy to Remote Server
           command: |
-            ssh -o StrictHostKeyChecking=no -v ubuntu@34.244.215.8 "/home/ubuntu/deploy.sh"
+            ssh -o StrictHostKeyChecking=no -v ubuntu@34.244.215.8 "/deploy.sh"
 
 workflows:
   version: 2
