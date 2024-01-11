@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Deploy to Remote Server
           command: |
-            ssh -o StrictHostKeyChecking=no -v ubuntu@ec2-34-244-215-8.eu-west-1.compute.amazonaws.com "/home/ubuntu/saud4567/.circleci"
+            ssh -o StrictHostKeyChecking=no -v ubuntu@ec2-34-244-215-8.eu-west-1.compute.amazonaws.com "/home/ubuntu/saud4567/.circleci/config.yml"
 
 workflows:
   version: 2
