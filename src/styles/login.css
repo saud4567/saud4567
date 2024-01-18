@@ -1,0 +1,14 @@
+
+.auth__form{
+    padding:40px;
+}
+
+.auth__form p{
+    margin-top:15px;
+}
+
+.auth__form input[type="file"]{
+    color: #000;
+    border:none;
+    cursor: pointer;
+}
